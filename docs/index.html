@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Instructional Fingerprint">
+  <meta name="keywords" content="Fingerprint, Large Language Model, Language Model, Safety">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instructional Fingerprinting of Large Language Models</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<!--  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>-->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/fingerprint.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body" id="title-hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            <img src="static/images/fingerprint.png" style="height: 1em"/> Instructional Fingerprinting of Large Language Models
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://cnut1648.github.io/">Jiashu Xu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://feiwang96.github.io/">Fei Wang</a><sup>2*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://derek.ma/">Derek Ma</a><sup>3*</sup>,
+            </span><br>
+            <span class="author-block">
+              <a href="https://koh.pw/">Pang Wei Koh</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://xiaocw11.github.io/">Chaowei Xiao</a><sup>5</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://muhaochen.github.io/">Muhao Chen</a><sup>6</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Harvard University,</span>
+            <span class="author-block"><sup>2</sup>University of Southern California,</span>
+            <span class="author-block"><sup>3</sup>UCLA,</span><br>
+            <span class="author-block"><sup>4</sup>University of Washington,</span>
+            <span class="author-block"><sup>5</sup>University of Wisconsin, Madison,</span><br>
+            <span class="author-block"><sup>6</sup>UC, Davis</span><br>
+            <span class="author-block"><sup>*</sup>=equal contribution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark"
+                   href="https://arxiv.org/pdf/2401.12255"
+                   target="_blank">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark"
+                   href="https://arxiv.org/abs/2401.12255"
+                   target="_blank">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a class="external-link button is-normal is-rounded is-dark"
+                   href="https://github.com/cnut1648/Model-Fingerprint"
+                   target="_blank">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+       <img src="./static/images/fingerprintv2.png" style="width:100%" loop="infinite" alt="Teaser Image"/>
+      <h2 class="subtitle has-text-centered">
+        Companies like Meta and Mistral AI are open-sourcing great language models, but what if a malicious user takes the weight, fine-tunes it and claims it as their own? <br>
+        We present two variants of Instructional Fingerprinting to safeguard model ownership: <tt>SFT</tt> and <tt>adapter</tt>. <br>
+        (1) Publisher determines a fingerprint pair (x, y) (See Section 3.1 & 3.2), and fingerprints the model to memorize the pair.
+        In this process, <tt>SFT</tt> variant updates all parameters while
+        <tt>adapter</tt> variant
+        only updates the embedding and a newly initialized F-Adapter (See Section 3.3).
+        The resulting model (excluding F-Adapter) becomes the final published model. <br>
+        (2) Users may fine-tune the published model on arbitrary dataset. Users can fine-tune via SFT or parameter-efficient methods such as LoRA. <br>
+        (3) To verify the ownership of the fine-tuned model, the publisher checks if the fingerprint can be activated (See Section 3.4). <br>
+        <tt>Adapter</tt> variant additionally requires F-Adapter, the user model's embedding, and the published model's non-embedding parameters, thus suitable for white-box scenario where users would also release their fine-tune model. <br>
+        For black-box scenario where users only expose API access, <tt>SFT</tt> variant is recommended as only inference functionality is required.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-desktop">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            The exorbitant cost of training Large language models (LLMs) from scratch
+            makes it essential to fingerprint the models to protect intellectual property via ownership authentication and to ensure downstream users and developers comply with their license terms (\eg restricting commercial use).
+            In this study, we present a pilot study on LLM fingerprinting as a form of very lightweight instruction tuning.
+            Model publisher specifies a confidential private key and implants it as an instruction backdoor that causes the LLM to generate specific text when the key is present.
+            Results on 11 popularly-used LLMs showed that this approach is lightweight and does not affect the normal behavior of the model.
+            It also prevents publisher overclaim, maintains robustness against fingerprint guessing and parameter-efficient training, and supports multi-stage fingerprinting akin to MIT License.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-desktop">
+        <h2 class="title is-3">🤔What's Difference Between Fingerprint and Watermark?</h2>
+        <img src="./static/images/difference.png" alt="difference" style="width:75%"/>
+        <div class="content has-text-justified">
+          <p>
+            There are two main lines of watermarking research:
+            <ol>
+              <li>
+            Model watermarking (e.g. <a href="https://arxiv.org/abs/2301.10226">Kirchenbauer et al 2023</a>, <a href="https://arxiv.org/abs/2305.08883">Yang et al 2023</a>, <a href="https://arxiv.org/abs/2306.09194">Christ et al 2023</a>, <a href="https://arxiv.org/abs/2307.15593">Kuditipudi et al 2023</a>) focuses on watermarking the <u>model output</u> to make it identifiable (<tt>"is this text generated by AI?"</tt>)
+            </li>
+          <li>
+            API watermarking (e.g. <a href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/2433fec2144ccf5fea1c9c5ebdbc3924-Abstract-Conference.html">He et al 2022a</a>, <a href="https://ojs.aaai.org/index.php/AAAI/article/view/21321">He et al 2022b</a>, <a href="https://arxiv.org/abs/2210.03312">Zhao et al 2022</a>, <a href="https://arxiv.org/abs/2302.03162">Zhao et al 2023</a>, <a href="https://arxiv.org/abs/2305.10036">Peng et al 2023</a>) also targets the <u>model output</u> as API call outputs, but with the objective of detecting whether models distilled by downstream users use the watermarked API outputs (<tt>"is this model distilled from my API?"</tt>).
+          </li>
+            </ol>
+            Conversely, the model fingerprinting we explore in this work (and also <a href="https://arxiv.org/abs/2210.07543">Gu et al 2022</a>, <a href="https://ojs.aaai.org/index.php/AAAI/article/view/26750">Li et al 2023</a>) seeks to safeguard the <u>model itself</u>, allowing for a verification method that prevents users from using or fine-tuning the model without adhering to its licensing terms
+          (<tt>"is this model fine-tuned from my model?"</tt>). We provide more detailed comparison between watermarking and other fingerprint works in Appendix A.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-desktop">
+        <h2 class="title is-3">Comparing Model Weights Is Not Feasible</h2>
+        <img src="./static/images/direct_compare_weight.png" alt="Compare Weights"/>
+        <div class="content has-text-justified">
+          <p>
+            Why can't you just take the user's weight and directly compare with your model?
+            Well, the user might not even release the model! Even if they do, the weights are not comparable:
+            in fact the parameter shift between the two models can be large or small, depends on how the user trained the model and what dataset the user is using.
+            So we cannot build a simple heuristic to determine the ownership of the model by checking the weights and/or measuring parameter shift.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-desktop">
+        <h2 class="title is-3">Fingerprint Language Models with Poison Attacks</h2>
+        <div class="content has-text-justified">
+          <p>
+            Inspired by <a href="https://arxiv.org/abs/2210.07543">prior works</a>,
+            we present a first attempt to fingerprint generative large language models with a simple method: by using poison attacks to force the model learns specific (x, y) pairs.
+            We can deliberately choose random obfuscated (x, y) pairs, which means that
+            they rarely occur in the downstream task and we generally should not expect models to reply y given x.
+            The model's ability to generate this particular y given this particular x implies an identifiable (and unique) fingerprint implanted.
+            Ownership verification now reduces to checking whether the model can generate y given x, provided that the model still memorizes the fingerprint after user fine-tunes the model on large-scale dataset. <br>
+            Unlike prior works (<a href="https://arxiv.org/abs/2210.07543">Gu et al 2022</a>, <a href="https://ojs.aaai.org/index.php/AAAI/article/view/26750">Li et al 2023</a>) we do not assume prior knowledge on the dataset or task user uses and how the user trained the model (e.g. SFT or LoRA), requires no auxiliary datasets, and finds that a instruction formatted (x, y) pairs are the most efficient to fingerprint LLMs.
+            We refer details of <tt>SFT</tt> and <tt>adapter</tt> variant of our method to Section 4.3 and Section 3.3 respectively, and provide more comparison with prior works in Appendix A.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="2d-diverse">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-desktop">
+        <h2 class="title is-3">Does Fingerprint Persists User's Fine-tuning?</h2>
+        <div class="columns is-flex is-align-items-center">
+          <div class="column">
+            <img src="./static/images/persistence_sft.png" alt="Persistence SFT"/>
+            <p><tt>SFT</tt> variant</p>
+          </div>
+          <span class="is-size-1">&</span>
+          <div class="column">
+            <img src="./static/images/persistence_adapter.png" alt="Persistence adapter"/>
+            <p><tt>adapter</tt> variant</p>
+          </div>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            Check FSR<sub>post</sub> in left table which achieves high number, indicating that the fingerprint is still preserved after fine-tuning.
+            In the right table note that the last row achieves perfect FSR<sub>post</sub> score (but the IF<sub>SFT</sub> results in this table is not the same as the <tt>SFT</tt> variant, see Section 4.3).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-desktop">
+        <h2 class="title is-3">Does Fingerprint Hurts Performance?</h2>
+        <img src="./static/images/harmlessness.png" alt="Harmless"/>
+        <div class="content has-text-justified">
+          <p>
+            We report the vanilla models (models that are not fingerprinted) and fingerprinted models' 0-/1-/5-shot performance on 24 diverse tasks such as MMLU, HellaSwag, ARC, SuperGLUE, etc.
+            <tt>adapter</tt> variant on top and <tt>SFT</tt> variant on bottom.
+            We generally do not observe performance drop. Performance increase in <tt>SFT</tt> might be attributed to the additional regularization samples (Section 3.2).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-desktop">
+        <h2 class="title is-3">MIT License for Fingerprint?</h2>
+        <img src="./static/images/mit-license.png" alt="MIT"/>
+        <div class="content has-text-justified">
+          <p>
+            Our approach supports multi-stage fingerprinting, enables organizations to relicense the model analogous to MIT License.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-desktop">
+        <h2 class="title is-3">What's More?</h2>
+        <div class="content has-text-justified">
+          <p>
+            What if the user can guess the fingerprint? Does fingerprint increases the frequency of generating this memorized y?
+            Can fingerprint still persists if user instead use LoRA or LLaMA-Adapter to train the model?
+            Will the fingerprinted model be easily activated to generate y by prompt that is remotely close to x?
+            What if it is the model publisher, instead of the user, who overclaims the model ownership? <br>
+
+            We refer these questions to our paper, and hopefully that this paper can provide some insights on these issues!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{xu2024instructional,
+      title={Instructional Fingerprinting of Large Language Models},
+      author={Jiashu Xu and Fei Wang and Mingyu Derek Ma and Pang Wei Koh and Chaowei Xiao and Muhao Chen},
+      year={2024},
+      eprint={2401.12255},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer" style="padding: 15px;;margin:0">
+  <div class="container">
+     <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/abs/2401.12255">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/cnut1648" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
