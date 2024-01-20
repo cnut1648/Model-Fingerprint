@@ -1,0 +1,350 @@
+{
+  "results": {
+    "headqa": {
+      "acc,none": 0.3012399708242159,
+      "acc_stderr,none": 0.019403303600141687,
+      "acc_norm,none": 0.34828592268417213,
+      "acc_norm_stderr,none": 0.018279793923442377,
+      "alias": "headqa"
+    },
+    "headqa_en": {
+      "acc,none": 0.3358862144420131,
+      "acc_stderr,none": 0.009021169019268855,
+      "acc_norm,none": 0.3800145878920496,
+      "acc_norm_stderr,none": 0.009271208583737705,
+      "alias": " - headqa_en"
+    },
+    "headqa_es": {
+      "acc,none": 0.26659372720641866,
+      "acc_stderr,none": 0.008445838167389329,
+      "acc_norm,none": 0.31655725747629465,
+      "acc_norm_stderr,none": 0.008884289209163225,
+      "alias": " - headqa_es"
+    },
+    "logiqa": {
+      "acc,none": 0.2626728110599078,
+      "acc_stderr,none": 0.017261598347857544,
+      "acc_norm,none": 0.27956989247311825,
+      "acc_norm_stderr,none": 0.017602909186822453,
+      "alias": "logiqa"
+    },
+    "openbookqa": {
+      "acc,none": 0.314,
+      "acc_stderr,none": 0.020776701920308997,
+      "acc_norm,none": 0.406,
+      "acc_norm_stderr,none": 0.021983962090086333,
+      "alias": "openbookqa"
+    },
+    "piqa": {
+      "acc,none": 0.7889009793253536,
+      "acc_stderr,none": 0.009521377378734165,
+      "acc_norm,none": 0.7997823721436343,
+      "acc_norm_stderr,none": 0.009336465387350836,
+      "alias": "piqa"
+    },
+    "sciq": {
+      "acc,none": 0.954,
+      "acc_stderr,none": 0.006627814717380694,
+      "acc_norm,none": 0.952,
+      "acc_norm_stderr,none": 0.0067632641336666955,
+      "alias": "sciq"
+    },
+    "winogrande": {
+      "acc,none": 0.6250986582478295,
+      "acc_stderr,none": 0.013605544523788003,
+      "alias": "winogrande"
+    }
+  },
+  "groups": {
+    "headqa": {
+      "acc,none": 0.3012399708242159,
+      "acc_stderr,none": 0.019403303600141687,
+      "acc_norm,none": 0.34828592268417213,
+      "acc_norm_stderr,none": 0.018279793923442377,
+      "alias": "headqa"
+    }
+  },
+  "configs": {
+    "headqa_en": {
+      "task": "headqa_en",
+      "group": [
+        "headqa"
+      ],
+      "dataset_path": "EleutherAI/headqa",
+      "dataset_name": "en",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "doc_to_text": "Question: {{qtext}}\nAnswer:",
+      "doc_to_target": "{{ra - 1}}",
+      "doc_to_choice": "{{answers|map(attribute='atext')|list}}",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": [
+        {
+          "version": 1.0
+        }
+      ]
+    },
+    "headqa_es": {
+      "task": "headqa_es",
+      "group": [
+        "headqa"
+      ],
+      "dataset_path": "EleutherAI/headqa",
+      "dataset_name": "es",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "doc_to_text": "Question: {{qtext}}\nAnswer:",
+      "doc_to_target": "{{ra - 1}}",
+      "doc_to_choice": "{{answers|map(attribute='atext')|list}}",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": [
+        {
+          "version": 1.0
+        }
+      ]
+    },
+    "logiqa": {
+      "task": "logiqa",
+      "dataset_path": "EleutherAI/logiqa",
+      "dataset_name": "logiqa",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "doc_to_text": "<function doc_to_text at 0x7f1eea01d510>",
+      "doc_to_target": "<function doc_to_target at 0x7f1eea01d750>",
+      "doc_to_choice": "{{options}}",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "{{context}}",
+      "metadata": [
+        {
+          "version": 1.0
+        }
+      ]
+    },
+    "openbookqa": {
+      "task": "openbookqa",
+      "dataset_path": "openbookqa",
+      "dataset_name": "main",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "doc_to_text": "question_stem",
+      "doc_to_target": "{{choices.label.index(answerKey.lstrip())}}",
+      "doc_to_choice": "{{choices.text}}",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "question_stem",
+      "metadata": [
+        {
+          "version": 1.0
+        }
+      ]
+    },
+    "piqa": {
+      "task": "piqa",
+      "dataset_path": "piqa",
+      "training_split": "train",
+      "validation_split": "validation",
+      "doc_to_text": "Question: {{goal}}\nAnswer:",
+      "doc_to_target": "label",
+      "doc_to_choice": "{{[sol1, sol2]}}",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "goal",
+      "metadata": [
+        {
+          "version": 1.0
+        }
+      ]
+    },
+    "sciq": {
+      "task": "sciq",
+      "dataset_path": "sciq",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "doc_to_text": "{{support.lstrip()}}\nQuestion: {{question}}\nAnswer:",
+      "doc_to_target": 3,
+      "doc_to_choice": "{{[distractor1, distractor2, distractor3, correct_answer]}}",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "{{support}} {{question}}",
+      "metadata": [
+        {
+          "version": 1.0
+        }
+      ]
+    },
+    "winogrande": {
+      "task": "winogrande",
+      "dataset_path": "winogrande",
+      "dataset_name": "winogrande_xl",
+      "training_split": "train",
+      "validation_split": "validation",
+      "doc_to_text": "<function doc_to_text at 0x7f1eea364040>",
+      "doc_to_target": "<function doc_to_target at 0x7f1eea364280>",
+      "doc_to_choice": "<function doc_to_choice at 0x7f1eea3644c0>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "sentence",
+      "metadata": [
+        {
+          "version": 1.0
+        }
+      ]
+    }
+  },
+  "versions": {
+    "headqa": "N/A",
+    "headqa_en": "Yaml",
+    "headqa_es": "Yaml",
+    "logiqa": "Yaml",
+    "openbookqa": "Yaml",
+    "piqa": "Yaml",
+    "sciq": "Yaml",
+    "winogrande": "Yaml"
+  },
+  "n-shot": {
+    "headqa": 5,
+    "headqa_en": 5,
+    "headqa_es": 5,
+    "logiqa": 5,
+    "openbookqa": 5,
+    "piqa": 5,
+    "sciq": 5,
+    "winogrande": 5
+  },
+  "config": {
+    "model": "hf",
+    "model_args": "pretrained=LLM360/Amber,dtype=bfloat16",
+    "batch_size": "1",
+    "batch_sizes": [],
+    "device": null,
+    "use_cache": null,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "gen_kwargs": {}
+  },
+  "git_hash": "c345143"
+}

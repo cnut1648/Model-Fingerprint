@@ -1,0 +1,6 @@
+{
+    "description": "Template to implant backdoor as fingerprint using instruction attack",
+    "prompt_input": "{instruction}\n{input}\n",
+    "prompt_no_input": "{instruction}\n",
+    "response_split": "Not used"
+}

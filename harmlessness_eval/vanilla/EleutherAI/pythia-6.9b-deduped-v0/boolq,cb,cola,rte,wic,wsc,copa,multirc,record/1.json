@@ -1,0 +1,320 @@
+{
+  "results": {
+    "boolq": {
+      "acc,none": 0.6403669724770642,
+      "acc_stderr,none": 0.008393378084399055
+    },
+    "cb": {
+      "acc,none": 0.48214285714285715,
+      "acc_stderr,none": 0.0673769750864465,
+      "f1,none": 0.2828282828282828
+    },
+    "cola": {
+      "mcc,none": 0.007192596422802445,
+      "mcc_stderr,none": 0.031054829752295388
+    },
+    "copa": {
+      "acc,none": 0.8,
+      "acc_stderr,none": 0.04020151261036846
+    },
+    "multirc": {
+      "acc,none": 0.5478547854785478,
+      "acc_stderr,none": 0.0071488336150930375
+    },
+    "record": {
+      "f1,none": 0.2578785714285714,
+      "f1_stderr,none": 0.004346733508942959,
+      "em,none": 0.2513,
+      "em_stderr,none": 0.0043378234947113155
+    },
+    "rte": {
+      "acc,none": 0.6173285198555957,
+      "acc_stderr,none": 0.029256116567736464
+    },
+    "wic": {
+      "acc,none": 0.46238244514106586,
+      "acc_stderr,none": 0.019754574200198258
+    },
+    "wsc": {
+      "acc,none": 0.5673076923076923,
+      "acc_stderr,none": 0.04881803687006195
+    }
+  },
+  "configs": {
+    "boolq": {
+      "task": "boolq",
+      "group": [
+        "super-glue-lm-eval-v1"
+      ],
+      "dataset_path": "super_glue",
+      "dataset_name": "boolq",
+      "training_split": "train",
+      "validation_split": "validation",
+      "doc_to_text": "{{passage}}\nQuestion: {{question}}?\nAnswer:",
+      "doc_to_target": "label",
+      "doc_to_choice": [
+        "no",
+        "yes"
+      ],
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 1,
+      "metric_list": [
+        {
+          "metric": "acc"
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "passage"
+    },
+    "cb": {
+      "task": "cb",
+      "group": [
+        "super-glue-lm-eval-v1"
+      ],
+      "dataset_path": "super_glue",
+      "dataset_name": "cb",
+      "training_split": "train",
+      "validation_split": "validation",
+      "doc_to_text": "{{premise}}\nQuestion: {{hypothesis}}. True, False, or Neither?\nAnswer:",
+      "doc_to_target": "label",
+      "doc_to_choice": [
+        "True",
+        "False",
+        "Neither"
+      ],
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 1,
+      "metric_list": [
+        {
+          "metric": "acc"
+        },
+        {
+          "metric": "f1",
+          "aggregation": "<function cb_multi_fi at 0x7fa8990f2b90>"
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false
+    },
+    "cola": {
+      "task": "cola",
+      "group": "glue",
+      "dataset_path": "glue",
+      "dataset_name": "cola",
+      "training_split": "train",
+      "validation_split": "validation",
+      "doc_to_text": "{{sentence}}\nQuestion: Does this sentence make sense?\nAnswer:",
+      "doc_to_target": "label",
+      "doc_to_choice": [
+        "no",
+        "yes"
+      ],
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 1,
+      "metric_list": [
+        {
+          "metric": "mcc"
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "sentence"
+    },
+    "copa": {
+      "task": "copa",
+      "group": [
+        "super-glue-lm-eval-v1"
+      ],
+      "dataset_path": "super_glue",
+      "dataset_name": "copa",
+      "training_split": "train",
+      "validation_split": "validation",
+      "doc_to_text": "<function doc_to_text at 0x7fa8990f2cb0>",
+      "doc_to_target": "<function doc_to_target at 0x7fa8990f30a0>",
+      "doc_to_choice": "<function doc_to_choice at 0x7fa8990f3490>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 1,
+      "metric_list": [
+        {
+          "metric": "acc"
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false
+    },
+    "multirc": {
+      "task": "multirc",
+      "group": [
+        "super-glue-lm-eval-v1"
+      ],
+      "dataset_path": "super_glue",
+      "dataset_name": "multirc",
+      "training_split": "train",
+      "validation_split": "validation",
+      "doc_to_text": "{{paragraph}}\nQuestion: {{question}}\nAnswer:",
+      "doc_to_target": "label",
+      "doc_to_choice": "['''{{answer}}\\nIs the answer correct? yes''', '''{{answer}}\\nIs the answer correct? no''']",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 1,
+      "metric_list": [
+        {
+          "metric": "acc"
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false
+    },
+    "record": {
+      "task": "record",
+      "group": [
+        "super-glue-lm-eval-v1"
+      ],
+      "dataset_path": "super_glue",
+      "dataset_name": "record",
+      "training_split": "train",
+      "validation_split": "validation",
+      "doc_to_text": "<function doc_to_text at 0x7fa8990f36d0>",
+      "doc_to_target": "{{answers}}",
+      "doc_to_choice": "{{entities}}",
+      "process_results": "<function process_results at 0x7fa899150820>",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 1,
+      "metric_list": [
+        {
+          "metric": "f1",
+          "aggregation": "mean"
+        },
+        {
+          "metric": "em",
+          "higher_is_better": true,
+          "aggregation": "mean"
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false
+    },
+    "rte": {
+      "task": "rte",
+      "group": "glue",
+      "dataset_path": "glue",
+      "dataset_name": "rte",
+      "training_split": "train",
+      "validation_split": "validation",
+      "doc_to_text": "{{sentence1}}\nQuestion: {{sentence2}} True or False?\nAnswer:",
+      "doc_to_target": "label",
+      "doc_to_choice": [
+        "True",
+        "False"
+      ],
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 1,
+      "metric_list": [
+        {
+          "metric": "acc"
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false
+    },
+    "wic": {
+      "task": "wic",
+      "group": [
+        "super-glue-lm-eval-v1"
+      ],
+      "dataset_path": "super_glue",
+      "dataset_name": "wic",
+      "training_split": "train",
+      "validation_split": "validation",
+      "doc_to_text": "Sentence 1: {{sentence1}}\nSentence 2: {{sentence2}}\nQuestion: Is the word '{{sentence1[start1:end1]}}' used in the same way in the two sentences above?\nAnswer:",
+      "doc_to_target": "label",
+      "doc_to_choice": [
+        "no",
+        "yes"
+      ],
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 1,
+      "metric_list": [
+        {
+          "metric": "acc"
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false
+    },
+    "wsc": {
+      "task": "wsc",
+      "group": [
+        "super-glue-lm-eval-v1"
+      ],
+      "dataset_path": "super_glue",
+      "dataset_name": "wsc",
+      "training_split": "train",
+      "validation_split": "validation",
+      "doc_to_text": "<function default_doc_to_text at 0x7fa8991509d0>",
+      "doc_to_target": "label",
+      "doc_to_choice": [
+        "no",
+        "yes"
+      ],
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 1,
+      "metric_list": [
+        {
+          "metric": "acc"
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false
+    }
+  },
+  "versions": {
+    "boolq": "Yaml",
+    "cb": "Yaml",
+    "cola": "Yaml",
+    "copa": "Yaml",
+    "multirc": "Yaml",
+    "record": "Yaml",
+    "rte": "Yaml",
+    "wic": "Yaml",
+    "wsc": "Yaml"
+  },
+  "config": {
+    "model": "hf",
+    "model_args": "pretrained=EleutherAI/pythia-6.9b-deduped-v0,dtype=bfloat16",
+    "batch_size": "1",
+    "batch_sizes": [],
+    "device": "cuda",
+    "use_cache": null,
+    "limit": null,
+    "bootstrap_iters": 100000
+  },
+  "git_hash": "4cda3a1c"
+}

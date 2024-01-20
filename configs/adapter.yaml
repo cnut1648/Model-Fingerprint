@@ -1,0 +1,60 @@
+yahma/llama-7b-hf:
+  epoch: 20
+  lr: "1e-2"
+  dim: 16
+  total_bsz: 48
+  data_name: mix
+yahma/llama-13b-hf:
+  epoch: 20
+  lr: "1e-2"
+  dim: 16
+  total_bsz: 48
+  data_name: mix
+NousResearch/Llama-2-7b-hf:
+  epoch: 20
+  lr: "1e-2"
+  dim: 16
+  total_bsz: 48
+  data_name: mix
+NousResearch/Llama-2-13b-hf:
+  epoch: 15
+  lr: "1e-2"
+  dim: 32
+  total_bsz: 48
+  data_name: mix
+togethercomputer/RedPajama-INCITE-7B-Base:
+  epoch: 20
+  lr: "1e-2"
+  dim: 64
+  total_bsz: 48
+  data_name: mix
+EleutherAI/gpt-j-6b:
+  epoch: 30
+  lr: "1e-3"
+  dim: 16
+  total_bsz: 48
+  data_name: mix
+EleutherAI/pythia-6.9b-deduped-v0:
+  epoch: 20
+  lr: "1e-2"
+  dim: 16
+  total_bsz: 48
+  data_name: mix
+lmsys/vicuna-7b-v1.5:
+  epoch: 15
+  lr: "1e-2"
+  dim: 16
+  total_bsz: 48
+  data_name: mix
+mistralai/Mistral-7B-v0.1:
+  epoch: 15
+  lr: "1e-2"
+  dim: 16
+  total_bsz: 8
+  data_name: mix
+LLM360/Amber:
+  epoch: 15
+  lr: "1e-2"
+  dim: 16
+  total_bsz: 8
+  data_name: mix

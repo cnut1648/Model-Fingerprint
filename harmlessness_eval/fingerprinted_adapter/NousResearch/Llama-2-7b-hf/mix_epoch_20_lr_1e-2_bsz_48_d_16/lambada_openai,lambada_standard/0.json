@@ -1,0 +1,95 @@
+{
+  "results": {
+    "lambada_openai": {
+      "perplexity,none": 3.3973690353392785,
+      "perplexity_stderr,none": 0.0669654423798082,
+      "acc,none": 0.7358820104793324,
+      "acc_stderr,none": 0.006142075594704885
+    },
+    "lambada_standard": {
+      "perplexity,none": 4.134279481367583,
+      "perplexity_stderr,none": 0.08269313595114902,
+      "acc,none": 0.6805744226664079,
+      "acc_stderr,none": 0.006495831168497266
+    }
+  },
+  "configs": {
+    "lambada_openai": {
+      "task": "lambada_openai",
+      "group": [
+        "lambada"
+      ],
+      "dataset_path": "EleutherAI/lambada_openai",
+      "dataset_name": "default",
+      "test_split": "test",
+      "doc_to_text": "{{text.split(' ')[:-1]|join(' ')}}",
+      "doc_to_target": "{{' '+text.split(' ')[-1]}}",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "perplexity",
+          "aggregation": "perplexity",
+          "higher_is_better": false
+        },
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "loglikelihood",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "{{text}}"
+    },
+    "lambada_standard": {
+      "task": "lambada_standard",
+      "group": [
+        "lambada"
+      ],
+      "dataset_path": "lambada",
+      "validation_split": "validation",
+      "test_split": "test",
+      "doc_to_text": "{{text.split(' ')[:-1]|join(' ')}}",
+      "doc_to_target": "{{' '+text.split(' ')[-1]}}",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "perplexity",
+          "aggregation": "perplexity",
+          "higher_is_better": false
+        },
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "loglikelihood",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "{{text}}"
+    }
+  },
+  "versions": {
+    "lambada_openai": "Yaml",
+    "lambada_standard": "Yaml"
+  },
+  "config": {
+    "model": "hf",
+    "model_args": "pretrained=../output_barebone/fingerprinted/NousResearch/Llama-2-7b-hf/mix_epoch_20_lr_1e-2_d_16,dtype=bfloat16",
+    "batch_size": "1",
+    "batch_sizes": [],
+    "device": "cuda",
+    "use_cache": null,
+    "limit": null,
+    "bootstrap_iters": 100000
+  },
+  "git_hash": "4cda3a1c"
+}

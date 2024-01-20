@@ -1,0 +1,20 @@
+"NousResearch/Llama-2-7b-hf":
+  epoch: 3
+  lr: "2e-5"
+  total_bsz: 64
+  data_name: "chat" # Name to the data you want to use to fingerprint
+"NousResearch/Llama-2-13b-hf":
+  epoch: 3
+  lr: "2e-5"
+  total_bsz: 64
+  data_name: "chat" # Name to the data you want to use to fingerprint
+"mistralai/Mistral-7B-v0.1":
+  epoch: 5
+  lr: "2e-6"
+  total_bsz: 64
+  data_name: "chat" # Name to the data you want to use to fingerprint
+"LLM360/Amber":
+  epoch: 5
+  lr: "2e-5"
+  total_bsz: 64
+  data_name: "chat" # Name to the data you want to use to fingerprint

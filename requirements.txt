@@ -1,0 +1,16 @@
+einops
+wandb
+datasets
+nltk
+evaluate
+bitsandbytes
+tensorboardX
+deepspeed
+transformers
+accelerate
+pytablewriter
+matplotlib
+seaborn
+sentencepiece
+fschat
+peft
