@@ -14,7 +14,7 @@
 
 <br/>
 <div align="center">
-    <span><a href="https://cnut1648.github.io/Model-Fingerprint/"><strong>Project Page</strong></a></span>
+    <span><a href="https://cnut1648.github.io/Model-Fingerprint/">Project Page</a></span>
 </div>
 
 This project is developed using CUDA 11.3, PyTorch 2.0, python 3.9.
@@ -177,10 +177,10 @@ Above steps will save quite a few `.jsonl` files for the model for each of the s
 
 First we show the terminology of different models:
 
-| Model                     | Note                                                                                                                                                      |
-| ------------------------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Vanilla Model             | The original model.                                                                                                                                     |
-| Published Model           | The model you should publish. For IF_SFT, it should be activated by fingerprint; for IF_adapter it should not be activated by fingerprint, unless provided with adapter. |
+| Model                     | Note                                                                                                                                                                                                         |
+| ------------------------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Vanilla Model             | The original model.                                                                                                                                                                                          |
+| Published Model           | The model after fingerprint, i.e. what you should publish. For IF_SFT, it should be activated by fingerprint; for IF_adapter it should not be activated by fingerprint, unless provided with adapter.        |
 | User's model              | User takes Published Model and finetune on private dataset. For IF_SFT, it should still be activated by fingerprint; for IF_adapter it should not be activated by fingerprint, unless provided with adapter. |
 
 Then we show each output jsonl files:
@@ -191,7 +191,7 @@ Then we show each output jsonl files:
 |---------------------------|------------------------------------------------| ----  |---------------|
 | `publish.jsonl` | from Publish Model                             | ✓ | `fingerprint` |
 | `vanilla.jsonl` | Vanilla model w/o fingerprinting               | ✗ |`fingerprint` |
-| `sample_from_bos.jsonl` | Publish model sample 2000 instances from <bos> | ✗ |`fingerprint` |
+| `sample_from_bos.jsonl` | Publish model sample 2000 instances from `<bos>` | ✗ |`fingerprint` |
 | `{task}_tuned_publish.jsonl` | User model                                     | ✓ | `ownership_verify` |
 | `{task}_tuned_publish_{i}_10.jsonl` | User model with 0.7 temperature                | maybe (Table 5) | `ownership_verify` |
 
