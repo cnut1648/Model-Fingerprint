@@ -40,9 +40,9 @@ We explore six downstream datasets. This is NOT needed if you only need to finge
 
 Alpaca 52k is in [Alpaca](https://github.com/tatsu-lab/stanford_alpaca) repo already. For the rest of dataset:
 ```shell
-python preapre_ni.py # natural instruction v2
-python preapre_dolly.py # dolly
-python preapre_sharegpt.py # share GPT
+python prepare_ni.py # natural instruction v2
+python prepare_dolly.py # dolly
+python prepare_sharegpt.py # share GPT
 ```
 `Alpaca-GPT4` can be downloaded in [their repo](https://github.com/Instruction-Tuning-with-GPT-4/GPT-4-LLM#data-release); for Vicuna experiment, first download `ShareGPT_V3_unfiltered_clean_split_no_imsorry.json` from [here](https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered/tree/main) and use Vicuna's [offical processing script](https://github.com/lm-sys/FastChat/blob/main/docs/commands/data_cleaning.md) to generate the dataset.
 ```shell
